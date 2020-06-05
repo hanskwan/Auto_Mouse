@@ -1,5 +1,7 @@
 import pyautogui as pg
+import datetime
 import time
+from tqdm import tqdm
 
 pg.FAILSAFE = True
 
@@ -17,9 +19,13 @@ duration = int(duration_str)*60 # in secs
 # Repeat click program
 
 print("This autoclick program will last for " + duration_str + " mins")
-print("Click rate: " + str(seconds_per_click) +"seconds per click")
-for i in range(duration):
+print("Click rate: " + str(seconds_per_click) +" seconds per click")
+for i in tqdm(range(duration)):
     pg.click()
-    print(i)
+    print("")
+    print("Click", i," | " ,"Time", datetime.datetime.now().time())
+    print("")
     time.sleep(pause_time)
+
+
     
